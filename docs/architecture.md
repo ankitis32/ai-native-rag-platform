@@ -12,30 +12,6 @@ The goal is to show *system design thinking*, not just LLM API usage.
 
 Client → FastAPI → RAG Pipeline → LLM → Response
 
-┌─────────┐
-│ Client  │
-└────┬────┘
-│
-▼
-┌──────────────┐
-│ FastAPI API  │
-│ (Auth + RLS) │
-└────┬─────────┘
-│
-▼
-┌────────────────────┐
-│ RAG Pipeline       │
-│ - Retrieval        │
-│ - Prompt Assembly  │
-│ - LLM Generation   │
-└────┬───────────────┘
-│
-▼
-┌────────────────────┐
-│ Vector Store       │
-│ (Per-Tenant Index) │
-└────────────────────┘
-
 ---
 
 ## Key Architectural Principles
