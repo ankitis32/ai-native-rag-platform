@@ -1,3 +1,4 @@
 def resolve_tenant(api_key: str) -> str:
-    # In production: lookup from DB / IAM
+    if not api_key:
+        raise ValueError("Missing API key")
     return api_key.split("_")[0]
