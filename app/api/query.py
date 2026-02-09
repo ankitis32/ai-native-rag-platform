@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Header
 from app.tenants.resolver import resolve_tenant
-from app.services.vector_store import VectorStore
+from app.services.store import vector_store
 from app.services.rag_pipeline import RAGPipeline
 
 router = APIRouter()
-vector_store = VectorStore()
 rag = RAGPipeline(vector_store)
 
 @router.post("/")
