@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Header
 from app.tenants.resolver import resolve_tenant
 from app.services.embeddings import embed
-from app.services.vector_store import VectorStore
+from app.services.store import vector_store
 
 router = APIRouter()
-vector_store = VectorStore()
 
 @router.post("/")
 async def ingest(
