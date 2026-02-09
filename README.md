@@ -1,7 +1,7 @@
 # AI-Native RAG Platform
 
 Production-shaped Retrieval-Augmented Generation system designed for
-multi-tenant SaaS environments.
+multi-tenant SaaS environments. This repo demonstrates how I design AI-native, multi-tenant systems.
 
 ## Features
 - Multi-tenant RAG architecture
@@ -11,7 +11,7 @@ multi-tenant SaaS environments.
 - API-first design (FastAPI)
 
 ## Architecture
-[short explanation + link to docs/architecture.md]
+docs/architecture.md
 
 ## API Endpoints
 POST /ingest
