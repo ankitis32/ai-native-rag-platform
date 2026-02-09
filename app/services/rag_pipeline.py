@@ -1,19 +1,23 @@
-class RAGPipeline:
-    def __init__(self, retriever, llm):
-        self.retriever = retriever
-        self.llm = llm
+from app.services.embeddings import embed
+from app.services.llm import generate
 
-    async def run(self, query: str, tenant_id: str):
-        docs = await self.retriever.retrieve(query, tenant_id)
-        context = "\n".join(d.page_content for d in docs)
+class RAGPipeline:
+    def __init__(self, vector_store):
+        self.vector_store = vector_store
+
+    async def query(self, tenant_id: str, question: str):
+        q_embedding = embed([question])[0]
+        docs = self.vector_store.search(tenant_id, q_embedding)
+
+        context = "\n".join(docs)
 
         prompt = f"""
-        Answer using the context below.
-        Context:
-        {context}
+You are an assistant answering questions using the context below.
 
-        Question:
-        {query}
-        """
+Context:
+{context}
 
-        return await self.llm.generate(prompt)
+Question:
+{question}
+"""
+        return await generate(prompt)
